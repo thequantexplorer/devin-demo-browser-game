@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark" />
+    <meta name="theme-color" content="#05070D" />
+    <title>Breakout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=Geist+Mono:wght@400;500&display=swap"
+    />
+  </head>
+  <body>
+    <main class="stage">
+      <canvas id="game" tabindex="0" aria-label="Breakout game. Use the arrow keys or A and D to move, Space to launch, R to restart."></canvas>
+      <footer class="controls" aria-label="Controls">
+        <span class="control"><kbd data-key="ArrowLeft">&larr;</kbd><kbd data-key="ArrowRight">&rarr;</kbd><span class="or">or</span><kbd data-key="KeyA">A</kbd><kbd data-key="KeyD">D</kbd> Move</span>
+        <span class="control"><kbd class="wide" data-key="Space">Space</kbd> Launch</span>
+        <span class="control"><kbd data-key="KeyR">R</kbd> Restart</span>
+      </footer>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
