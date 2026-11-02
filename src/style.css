@@ -1,19 +1,101 @@
+:root {
+  --bg: #05070d;
+  --line: rgba(255, 255, 255, 0.08);
+  --text: rgba(255, 255, 255, 0.92);
+  --text-quiet: rgba(255, 255, 255, 0.45);
+  --accent: #3ed1e6;
+  --font-sans: 'Geist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
   height: 100%;
-  background: #111;
-  color: #eee;
-  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
 }
 
 main {
-  display: grid;
-  place-items: center;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  min-height: 100%;
+  padding: 32px;
 }
 
 canvas {
-  background: #000;
-  border: 1px solid #333;
+  display: block;
+  width: min(calc(100vw - 64px), calc((100vh - 136px) * 4 / 3));
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(0, 0, 0, 0.4);
+  outline: none;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+canvas:focus-visible {
+  border-color: rgba(62, 209, 230, 0.5);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 4px rgba(62, 209, 230, 0.16);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 32px;
+  margin: 0;
+  font-size: 13px;
+  line-height: 24px;
+  color: var(--text-quiet);
+  user-select: none;
+}
+
+.controls span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+kbd + kbd {
+  margin-left: -4px;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
