@@ -18,7 +18,7 @@ Open [app.devin.ai](https://app.devin.ai), start a new session and paste this. R
 ```text
 Build a Breakout game in https://github.com/<you>/devin-demo-browser-game. It is an empty Vite app. README.md has the game rules and the shape of the game state. The tests in src/game.test.js fail because src/game.js is not written yet.
 
-Follow the design skill in .agents/skills/design/SKILL.md. The result should look like a finished, polished product, not a default template.
+Follow the repo's design skill. The result should look like a finished, polished product.
 
 1. Write the game logic in src/game.js until npm test passes. Keep it free of DOM and canvas code.
 2. In src/main.js, draw the game on the canvas: paddle, ball, bricks, score and lives. Use the keyboard: Left/Right arrows (and A/D) move the paddle, Space launches the ball, R restarts. Show "You win" or "Game over" with "Press R to play again".
