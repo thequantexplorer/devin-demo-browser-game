@@ -451,8 +451,9 @@ function draw(now) {
     const amount = 5 * shake;
     ctx.translate((Math.random() * 2 - 1) * amount, (Math.random() * 2 - 1) * amount);
   }
+  const celebrating = state.status === 'won';
   drawBricks(now);
-  drawParticles();
+  if (!celebrating) drawParticles();
   drawPaddle();
   drawBall();
   drawHud(now);
@@ -465,6 +466,7 @@ function draw(now) {
   }
   if (panel) drawPanel(panel, now);
   else if (state.status === 'ready') drawLaunchHint(now);
+  if (celebrating) drawParticles();
 }
 
 let last = performance.now();
