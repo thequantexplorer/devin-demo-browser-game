@@ -1,0 +1,116 @@
+:root {
+  --bg: #05070d;
+  --text: #e6edf7;
+  --muted: #7d8aa3;
+  --line: rgba(255, 255, 255, 0.08);
+  --accent: #3ed1e6;
+  --sans: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.stage {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 32px;
+}
+
+#game {
+  display: block;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #05070d;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 64px rgba(62, 209, 230, 0.06);
+  outline: none;
+  transition: box-shadow 200ms ease, border-color 200ms ease;
+}
+
+#game:focus-visible {
+  border-color: rgba(62, 209, 230, 0.5);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6), 0 0 0 3px rgba(62, 209, 230, 0.18);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px 32px;
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted);
+  animation: fade-in 250ms ease both;
+}
+
+.control {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.or {
+  text-transform: lowercase;
+  opacity: 0.7;
+}
+
+kbd {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  border: 1px solid var(--line);
+  border-bottom-width: 2px;
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+kbd.wide {
+  min-width: 56px;
+}
+
+kbd.pressed {
+  background: rgba(62, 209, 230, 0.14);
+  border-color: rgba(62, 209, 230, 0.5);
+  color: var(--accent);
+  transform: translateY(1px);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
