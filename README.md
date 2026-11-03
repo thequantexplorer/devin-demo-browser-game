@@ -1,6 +1,6 @@
 # devin-demo-browser-game
 
-An empty [Vite](https://vite.dev) app that will become a Breakout game. Plain JavaScript and an HTML canvas. No framework.
+Breakout in the browser. It uses [Vite](https://vite.dev), plain JavaScript and an HTML canvas, with no framework.
 
 ```sh
 npm install
@@ -9,18 +9,11 @@ npm test       # unit tests for the game logic
 npm run build
 ```
 
-Right now the page only says "Your game goes here", and `npm test` fails because the game logic is not written yet:
-
-```text
- Test Files  1 failed (1)
-      Tests  14 failed (14)
-```
-
 ## Files
 
-- `src/game.js`: the game logic. No DOM or canvas code, so it can be unit tested. Not written yet.
-- `src/game.test.js`: tests for the game logic.
-- `src/main.js`: draws the game on the canvas and reads the keyboard.
+- `src/game.js`: the game logic, `createGame()` and `step(state, input, dt)`. It has no DOM or canvas code, so it can be unit tested.
+- `src/game.test.js`: Vitest tests for the game logic.
+- `src/main.js`: draws the game on the canvas, plays sounds and reads the keyboard.
 - `index.html`, `src/style.css`: the page.
 
 ## Game rules
@@ -44,8 +37,8 @@ The screen is `WIDTH` x `HEIGHT` (480 x 360) pixels. `(0, 0)` is the top left.
 
 - Left and right move the paddle. The paddle never leaves the screen.
 - While `ready`, the ball sits on the middle of the paddle and moves with it. Launch sends it upward and the status becomes `playing`.
-- The ball bounces off the left, right and top walls, and off the paddle.
-- When the ball hits a brick, the brick breaks (`alive: false`), the score goes up by 10 and the ball bounces back.
+- The ball bounces off the left, right and top walls, and off the paddle. Where the ball hits the paddle sets the bounce angle.
+- When the ball hits a brick, the brick breaks (`alive: false`), the score goes up by 10, the ball bounces back and gets a little faster.
 - When the last brick breaks, the status becomes `won`.
 - When the ball falls off the bottom, you lose a life. If you have lives left, the status goes back to `ready`. If not, it becomes `lost`.
 - Once the game is `won` or `lost`, `step` changes nothing. Start a new game with `createGame()`.
@@ -55,7 +48,3 @@ The screen is `WIDTH` x `HEIGHT` (480 x 360) pixels. `(0, 0)` is the top left.
 - Left / Right arrow keys (or A / D): move the paddle
 - Space: launch the ball
 - R: restart
-
----
-
-This repo is a starter for a Devin workshop lab. See [DEVIN_DEMO.md](DEVIN_DEMO.md) for the steps and the prompt.
